@@ -21,7 +21,6 @@
     "lint": "eslint src/**/*.{ts,tsx} demo/src/**/*.{ts,tsx}",
     "size": "npm run build && size-limit",
     "check-types": "tsc --noEmit true",
-    "test": "jest tests --coverage",
     "build": "del-cli 'dist/*' && microbundle build --entry src/index.ts --jsx React.createElement --name react-colorful --css inline --tsconfig tsconfig.build.json",
     "postbuild": "cpy dist/index.module.js dist --rename=index.mjs && cpy dist/index.module.js.map dist --rename=index.mjs.map",
     "prepublishOnly": "npm run build",
