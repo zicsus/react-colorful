@@ -144,7 +144,6 @@ const InteractiveBase = ({ onMove, onKey, ...rest }: Props) => {
   return (
     <div
       {...rest}
-      onTouchStart={handleMoveStart}
       onMouseDown={handleMoveStart}
       className="react-colorful__interactive"
       ref={container}
