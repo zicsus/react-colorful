@@ -9,7 +9,11 @@ export interface Interaction {
 }
 
 // Check if an event was triggered by touch
-const isTouch = (event: MouseEvent | TouchEvent): event is TouchEvent => "touches" in event;
+const isTouch = (event: MouseEvent | TouchEvent): event is TouchEvent => 
+{
+  return false;
+  // return "touches" in event
+};
 
 // Finds a proper touch point by its identifier
 const getTouchPoint = (touches: TouchList, touchId: null | number): Touch => {
@@ -78,7 +82,7 @@ const InteractiveBase = ({ onMove, onKey, ...rest }: Props) => {
       if (isInvalid(nativeEvent, hasTouch.current) || !el) return;
 
       if (isTouch(nativeEvent)) {
-        hasTouch.current = true;
+        hasTouch.current = false;
         const changedTouches = nativeEvent.changedTouches || [];
         if (changedTouches.length) touchId.current = changedTouches[0].identifier;
       }
