@@ -25,7 +25,7 @@ const getTouchPoint = (touches: TouchList, touchId: null | number): Touch => {
 
 // Finds the proper window object to fix iframe embedding issues
 const getParentWindow = (node?: HTMLDivElement | null): Window => {
-  return (node && node.ownerDocument.defaultView) || self;
+  return window;
 };
 
 // Returns a relative position of the pointer inside the node's bounding box
@@ -131,7 +131,9 @@ const InteractiveBase = ({ onMove, onKey, ...rest }: Props) => {
     function toggleDocumentEvents(state?: boolean) {
       const touch = hasTouch.current;
       const el = container.current;
+      console.log(el);
       const parentWindow = getParentWindow(el);
+      console.log(parentWindow);
 
       // Add or remove additional pointer event listeners
       const toggleEvent = state ? parentWindow.addEventListener : parentWindow.removeEventListener;
