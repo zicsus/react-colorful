@@ -40,8 +40,8 @@ const getRelativePosition = (
   const pointer = isTouch(event) ? getTouchPoint(event.touches, touchId) : (event as MouseEvent);
 
   return {
-    left: clamp((pointer.pageX - (rect.left + getParentWindow(node).pageXOffset)) / rect.width),
-    top: clamp((pointer.pageY - (rect.top + getParentWindow(node).pageYOffset)) / rect.height),
+    left: clamp((pointer.pageX - (rect.left + window.scrollX)) / rect.width),
+    top: clamp((pointer.pageY - (rect.top + window.scrollY)) / rect.height),
   };
 };
 
@@ -129,16 +129,13 @@ const InteractiveBase = ({ onMove, onKey, ...rest }: Props) => {
     };
 
     function toggleDocumentEvents(state?: boolean) {
-      const touch = hasTouch.current;
-      const el = container.current;
-      console.log(el);
-      const parentWindow = getParentWindow(el);
-      console.log(parentWindow);
-
       // Add or remove additional pointer event listeners
-      const toggleEvent = state ? parentWindow.addEventListener : parentWindow.removeEventListener;
-      toggleEvent(touch ? "touchmove" : "mousemove", handleMove);
-      toggleEvent(touch ? "touchend" : "mouseup", handleMoveEnd);
+      if (state) {
+        window.addEventListener("mousemove", handleMove);
+      }
+      else {
+        window.removeEventListener("mousemove", handleMove);
+      }
     }
 
     return [handleMoveStart, handleKeyDown, toggleDocumentEvents];
