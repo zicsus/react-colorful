@@ -1,1 +1,1 @@
-export declare const validHex: (value: string, alpha?: boolean | undefined) => boolean;
+export declare const validHex: (value: string, alpha?: boolean) => boolean;

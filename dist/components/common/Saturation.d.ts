@@ -7,5 +7,5 @@ interface Props {
         v: number;
     }) => void;
 }
-export declare const Saturation: React.MemoExoticComponent<({ hsva, onChange }: Props) => JSX.Element>;
+export declare const Saturation: React.MemoExoticComponent<({ hsva, onChange }: Props) => React.JSX.Element>;
 export {};

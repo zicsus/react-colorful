@@ -8,5 +8,5 @@ interface Props {
     onKey: (offset: Interaction) => void;
     children: React.ReactNode;
 }
-export declare const Interactive: React.MemoExoticComponent<({ onMove, onKey, ...rest }: Props) => JSX.Element>;
+export declare const Interactive: React.MemoExoticComponent<({ onMove, onKey, ...rest }: Props) => React.JSX.Element>;
 export {};

@@ -6,5 +6,5 @@ interface Props {
         h: number;
     }) => void;
 }
-export declare const Hue: React.MemoExoticComponent<({ className, hue, onChange }: Props) => JSX.Element>;
+export declare const Hue: React.MemoExoticComponent<({ className, hue, onChange }: Props) => React.JSX.Element>;
 export {};
