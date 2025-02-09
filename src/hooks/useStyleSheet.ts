@@ -11,7 +11,7 @@ const styleElementMap: Map<Document, HTMLStyleElement> = new Map();
 /**
  * Injects CSS code into the document's <head>
  */
-export const useStyleSheet = (nodeRef: RefObject<HTMLDivElement>): void => {
+export const useStyleSheet = (nodeRef: RefObject<HTMLDivElement>, root?: ShadowRoot): void => {
   useIsomorphicLayoutEffect(() => {
     const parentDocument = nodeRef.current ? nodeRef.current.ownerDocument : document;
 
@@ -24,7 +24,12 @@ export const useStyleSheet = (nodeRef: RefObject<HTMLDivElement>): void => {
       const nonce = getNonce();
       if (nonce) styleElement.setAttribute("nonce", nonce);
 
-      parentDocument.head.appendChild(styleElement);
+      if (root) {
+        root.prepend(styleElement);
+      } else {
+        parentDocument.head.appendChild(styleElement);
+      }
     }
   }, []);
+
 };

@@ -34,6 +34,7 @@ export interface ColorModel<T extends AnyColor> {
 type ColorPickerHTMLAttributes = Omit<React.HTMLAttributes<HTMLDivElement>, "color" | "onChange" | "onChangeCapture">;
 export interface ColorPickerBaseProps<T extends AnyColor> extends ColorPickerHTMLAttributes {
     color: T;
+    root?: ShadowRoot;
     onChange: (newColor: T) => void;
 }
 type ColorInputHTMLAttributes = Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange" | "value">;

@@ -17,10 +17,12 @@ export const ColorPicker = <T extends AnyColor>({
   colorModel,
   color = colorModel.defaultColor,
   onChange,
+  root,
   ...rest
+
 }: Props<T>): JSX.Element => {
   const nodeRef = useRef<HTMLDivElement>(null);
-  useStyleSheet(nodeRef);
+  useStyleSheet(nodeRef, root);
 
   const [hsva, updateHsva] = useColorManipulation<T>(colorModel, color, onChange);
 
